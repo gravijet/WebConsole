@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>Anmelden · Xeon-1</title>
+<script src="/theme.js"></script>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/login.css">
+</head>
+<body>
+<main class="center">
+  <div class="logo"><div class="mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h20v7H2zM2 13h20v7H2zM6 7.5h.01M6 16.5h.01"/></svg></div><div><b>Xeon-1</b><small>Server-Konsole</small></div></div>
+  <section id="card" class="card" aria-live="polite"><p class="muted" id="loading">Einen Moment …</p>
+
+    <form id="login" class="hidden" autocomplete="on" novalidate>
+      <h1>Anmelden</h1>
+      <p class="sub">Dieser Bereich ist privat.</p>
+      <label for="l-email">E-Mail</label>
+      <input id="l-email" name="username" type="email" autocomplete="username" inputmode="email" required autofocus>
+      <label for="l-pw">Passwort</label>
+      <div class="pw"><input id="l-pw" name="password" type="password" autocomplete="current-password" required><button type="button" class="eye" data-for="l-pw" aria-label="Passwort anzeigen">anzeigen</button></div>
+      <div id="l-code-box" class="hidden">
+        <label for="l-code">Zwei-Faktor-Code</label>
+        <input id="l-code" name="otp" type="text" inputmode="numeric" autocomplete="one-time-code" spellcheck="false" maxlength="24" placeholder="6-stelliger Code aus der App">
+        <p class="hint">Oder einen deiner Wiederherstellungscodes (z. B. abcde-fghjk).</p>
+      </div>
+      <p class="err" id="l-err" role="alert"></p>
+      <button class="primary" type="submit">Anmelden</button>
+    </form>
+
+    <form id="setup" class="hidden" autocomplete="on" novalidate>
+      <h1>Erste Einrichtung</h1>
+      <p class="sub">Lege ein Passwort fest. Den Einrichtungscode findest du auf dem Server:</p>
+      <pre class="cmd">sudo cat /var/lib/server-dash/setup-code.txt</pre>
+      <label for="s-email">E-Mail</label>
+      <input id="s-email" name="username" type="email" autocomplete="username" inputmode="email" required>
+      <label for="s-code">Einrichtungscode</label>
+      <input id="s-code" name="code" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+      <label for="s-pw">Neues Passwort</label>
+      <div class="pw"><input id="s-pw" name="new-password" type="password" autocomplete="new-password" required><button type="button" class="eye" data-for="s-pw" aria-label="Passwort anzeigen">anzeigen</button></div>
+      <div class="meter" aria-hidden="true"><i id="meter"></i></div>
+      <p class="hint" id="s-hint">Mindestens 12 Zeichen.</p>
+      <label for="s-pw2">Passwort wiederholen</label>
+      <input id="s-pw2" name="new-password-2" type="password" autocomplete="new-password" required>
+      <p class="err" id="s-err" role="alert"></p>
+      <button class="primary" type="submit">Passwort speichern und anmelden</button>
+    </form>
+  </section>
+  <p class="foot">Privater Bereich · Verschlüsselte Verbindung · Abmeldung nach 12 Std Inaktivität</p>
+</main>
+<script src="/login.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+import overview from './overview.js';
+import events from './events.js';
+import cpu from './cpu.js';
+import memory from './memory.js';
+import network from './network.js';
+import disks from './disks.js';
+import processes from './processes.js';
+import services from './services.js';
+import docker from './docker.js';
+import apps from './apps.js';
+import web from './web.js';
+import nginx from './nginx.js';
+import files from './files.js';
+import storage from './storage.js';
+import console_ from './console.js';
+import cron from './cron.js';
+import backups from './backups.js';
+import packages from './packages.js';
+import users from './users.js';
+import security from './security.js';
+import logs from './logs.js';
+import databases from './databases.js';
+import tools from './tools.js';
+import system from './system.js';
+import automation from './automation.js';
+import notes from './notes.js';
+import report from './report.js';
+import settings from './settings.js';
+import raw from './raw.js';
+
+// the sidebar groups views that follow each other, so views of one group are listed together
+export const VIEWS = [overview, events, cpu, memory, network, disks, processes, services, docker, apps, web, nginx, files, storage, console_, cron, backups, packages, users, security, logs, databases, tools, system, automation, notes, report, settings, raw];

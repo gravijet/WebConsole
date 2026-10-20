@@ -1,0 +1,4 @@
+.state/
+*.bak
+node_modules/
+*.log

@@ -1,0 +1,35 @@
+[Unit]
+Description=Xeon-1 Console (authenticated live server dashboard, console.benjaminberger.at)
+After=network-online.target nginx.service
+Wants=network-online.target
+
+[Service]
+User=serverdash
+Group=serverdash
+WorkingDirectory=/home/benj/ServerDash
+Environment=NODE_ENV=production PORT=3120 HOST=127.0.0.1
+ExecStart=/usr/bin/node --max-old-space-size=192 server.js
+StateDirectory=server-dash
+StateDirectoryMode=0750
+Restart=always
+RestartSec=3
+
+# Sandbox: reads /proc, /sys and its own code; writes only its state dir; no extra privileges.
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX AF_NETLINK
+RestrictNamespaces=yes
+RestrictRealtime=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+MemoryMax=512M
+TasksMax=128
+
+[Install]
+WantedBy=multi-user.target

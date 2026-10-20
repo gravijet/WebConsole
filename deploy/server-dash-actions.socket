@@ -1,0 +1,11 @@
+[Unit]
+Description=Xeon-1 Console: action helper socket (only root and the dashboard user may connect)
+
+[Socket]
+ListenStream=/run/server-dash-actions.sock
+SocketUser=root
+SocketGroup=serverdash
+SocketMode=0660
+
+[Install]
+WantedBy=sockets.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Xeon-1 Console: refresh Docker snapshot every 10 seconds
+
+[Timer]
+OnBootSec=5s
+OnUnitActiveSec=10s
+AccuracySec=1s
+
+[Install]
+WantedBy=timers.target

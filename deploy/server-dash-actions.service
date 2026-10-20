@@ -1,0 +1,21 @@
+[Unit]
+Description=Xeon-1 Console: privileged action helper (fixed operations only, started on demand)
+Requires=server-dash-actions.socket
+After=docker.service
+
+[Service]
+Type=simple
+Environment=HOME=/tmp DOCKER_CONFIG=/tmp
+ExecStart=/usr/bin/node /usr/local/lib/server-dash/actions-daemon.js
+
+# Runs as root because it manages processes, units, docker, packages, users, the firewall and files.
+# It accepts only the fixed operations in actions-daemon.js and exits when idle.
+# No ProtectSystem/ProtectHome/PrivateTmp on purpose: the file manager must see and change the real /etc, /home and /tmp.
+NoNewPrivileges=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+LockPersonality=yes
+MemoryMax=768M
+TasksMax=512

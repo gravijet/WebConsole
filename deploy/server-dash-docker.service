@@ -1,0 +1,19 @@
+[Unit]
+Description=Xeon-1 Console: Docker snapshot (whitelisted container facts for the dashboard)
+After=docker.service
+
+[Service]
+Type=oneshot
+Environment=HOME=/tmp DOCKER_CONFIG=/tmp
+ExecStart=/usr/bin/node /usr/local/lib/server-dash/docker-snapshot.js /var/lib/server-dash/docker.json
+# runs as root (docker socket) but may only write the one state directory
+NoNewPrivileges=yes
+ProtectSystem=strict
+ReadWritePaths=/var/lib/server-dash
+ProtectHome=yes
+PrivateTmp=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+TimeoutStartSec=30
